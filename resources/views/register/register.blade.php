@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url('/global/css/custom.css')}}" rel="stylesheet" type="text/css" />
-</head>
-<body style="background-image: url('{{ url('/global/images/background_main.jpg') }}');">
-
+@extends('layouts.app')
+<!-- <body style="background-image: url('{{ url('/global/images/background_main.jpg') }}');"> -->
+@section('content')
+<section class="register-container"  style="background-image: url('{{ url('/global/images/background_main.jpg') }}');">
 <div class="main-form">
 <form method="POST" action="{{ url('user_register') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <div class="container form-content">
+    <div class= form-content">
         <h2>Register</h2>
         <p>Please fill in this form to create an account.</p>
 
@@ -52,5 +48,6 @@
 
 </form>
 </div>
-</body>
-</html>
+</section>
+@stop
+

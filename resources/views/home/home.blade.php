@@ -1,38 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url('/global/css/custom.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ url('/global/css/tabs.css')}}" rel="stylesheet" type="text/css" />
-    <script src="{{ url('/global/js/jquery.js') }}"></script>
 
-    <link href="{{ url('/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ url('/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ url('/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ url('global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css" />
+@extends('layouts.app')
+@section('content')
+<section>
+    <div class="top-right">
+        <br/>
+        <span >Hi, {{ Session::get('name') }}</span>
+        
+          <form method="GET" action="{{ url('user_logout') }}" class="logoutBtn">
+              <button class="logout-btn" type="submit">Log out</button>
+          </form>
 
-    <link href="{{ url('global/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    <script src="{{ url('global/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-
-
-    <script src="{{ url('/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url('/global/js/datatable.js') }}" type="text/javascript"></script>
-    <script src="{{ url('/global/plugins/datatables/datatables.min.js')}}" type="text/javascript"></script>
-    <script src="{{ url('/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}" type="text/javascript"></script>
-    <script src="{{ url('global/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}" type="text/javascript"></script>
-
-</head>
-<body>
-
-        <div class="top-right">
-            <br/>
-            <span >Hi, {{ Session::get('name') }}</span>
-            
-              <form method="GET" action="{{ url('user_logout') }}" class="logoutBtn">
-                  <button class="logout-btn" type="submit">Log out</button>
-              </form>
-
-        </div>
+    </div>
 
 
     <div class="row clearfix">
@@ -91,110 +69,19 @@
     </div>
 
 </div>
+</section>
+@stop
 
-<!-- Modal content to add new departments -->
-    <div class="modal fade bs-modal-lg in" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-
-            <div class="modal-content">
-                <div class="modal-header panel-heading bg-ihrms">
-                    <a type="button" class="modal-close pull-right fa-lg" data-dismiss="modal" aria-hidden="true">x</a>
-                    <h4 class="modal-title">Add New Customer</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" id="newCustomer" role="form" enctype="multipart/form-data">
-                        <div class="form-group row clearfix">
-                            <div class="col-md-6">
-                                <label class="control-label form-label bold" for="name">Enter Name<span class="required"> *</span></label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="name" placeholder="name"/>
-                                    <span class="help-block" id="nameError" style="display:none;">Please enter proper values</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="control-label form-label bold" for="email">Enter Email <span class="required"> *</span></label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="email" placeholder="email"/>
-                                    <span class="help-block" id="emailError" style="display:none;">Please enter proper values</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row clearfix">
-                            <div class="col-md-6">
-                                <label class="control-label form-label bold" for="mobile">Enter Mobile Number <span class="required"> *</span></label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="mobile" placeholder="mobile"/>
-                                    <span class="help-block" id="mobileError" style="display:none;">Please enter proper values</span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="save()" style="width: 15%;">Save</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- end of modal -->
-
-    <!-- Modal content to edit departments -->
-    <div class="modal fade bs-modal-lg in" id="myModalEdit" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content modal-lg">
-                <div class="modal-header panel-heading bg-ihrms">
-                    <a type="button" class="modal-close pull-right fa-lg" data-dismiss="modal" aria-hidden="true">x</a>
-                    <h4 class="modal-title">Edit Customer Details</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group row clearfix">
-                            <div class="col-md-6">
-                                <label class="control-label bold form-label" for="nameEdit">Name <span class="required"> *</span></label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="nameEdit" placeholder="employee"/>
-                                    <span class="help-block" id="nameEditError" style="display:none;">Please enter proper values</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="control-label bold form-label" for="emailEdit">Email <span class="required"> *</span></label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="emailEdit" placeholder="email"/>
-                                    <span class="help-block" id="emailEditError" style="display:none;">Please enter proper values</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row clearfix">
-                            <div class="col-md-6">
-                                <label class="control-label bold form-label" for="mobileEdit">Mobile Number <span class="required"> *</span></label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="mobileEdit" placeholder="mobile"/>
-                                    <span class="help-block" id="mobileEditError" style="display:none;">Please enter proper values</span>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" id="updateID" value="">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="saveEdit()" style="width:15%;">Save</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- end of modal -->
+@section('javascript')
 
 <script type="text/javascript">
-  $('.date-picker').datepicker({
+       $(document).ready(function () {
+            $('.date-picker').datepicker({
             autoclose: true,
             format: "dd-mm-yyyy",
-        }).datepicker('setData', new Date());
+            }).datepicker('setData', new Date());
 
         var table = $('#table-users'); editimgsrc = '';
-
-        $(document).ready(function () {
             //To bind data to datatable
             table.dataTable({
                 responsive: true,
@@ -417,10 +304,9 @@
             }
 
         }
+    </script>
+    <script src="{{ url('/global/js/tabs.js') }}"></script>
+@stop
+  
 
-</script>
 
-<script src="{{ url('/global/js/tabs.js') }}"></script>
-
-</body>
-</html>

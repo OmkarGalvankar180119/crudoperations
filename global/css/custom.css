@@ -50,12 +50,19 @@ button:hover,.logout-btn:hover {
 
 .success { color:white; }
 
-.main-form h2,P { text-align: center; color: white;}
+.login-container, .register-container{
+    width: 100%;
+    background-repeat: : no-repeat
+    background-position: center center;
+    background-size: cover;
+    min-height: 98vh;
+}
+.main-form h2,P { text-align: center; color: white; margin: 0; }
 
 .main-form {
-    width: 50%;
-    height: 50%;
-    margin: 5% auto;
+    width: 30%;
+    margin: 0 auto;
+    padding-top: 5%;
     background-color: transparent;
 }
 
@@ -80,10 +87,6 @@ img.avatar {
     padding: 16px;
 }
 
-.form-content {
-    width: 50%;
-    margin: auto;
-}
 
 label {
     color: white;
@@ -138,9 +141,28 @@ span.help-block {
 #table-users_filter label { color: black; }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 1181px) {
+ 
+    .main-form {
+        width:50%;
+    
+    }
+}
+@media screen and (max-width: 768px) {
+   
+    .main-form {
+        width:70%;
+    
+    }
+}
+
+@media screen and (max-width: 640px) {
     span.psw {
         display: block;
         float: none;
+    }
+    .main-form {
+        width:80%;
+    
     }
 }
