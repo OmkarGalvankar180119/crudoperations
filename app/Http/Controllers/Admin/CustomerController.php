@@ -10,13 +10,18 @@ use Illuminate\Support\Facades\Crypt;
 
 class CustomerController extends Controller
 {
-    //
+    /*  parameterless contructor
+    *   @object creation for Customers model
+    */
     public function __construct() {
 
     	$this->customers = new Customers();
 
     }
 
+    /*  function to get all customer data
+    *   return to datatable to dsplay values
+    */
     public function getAllCustomersData() {
 
     	$getres = $this->customers->getAllDetails();
@@ -45,6 +50,9 @@ class CustomerController extends Controller
 
     }
 
+    /*  function to register new customer
+    *   @request object required
+    */
     public function newCustomer(Request $request) {
 
     	if(isset($request->name) && isset($request->email) && isset($request->mobile)) {
@@ -63,6 +71,10 @@ class CustomerController extends Controller
 
     }
 
+    /*  function to delete or get particular customer details
+    *   @id parameter for customer id
+    *   @operation parameter to identify delete or get details operation
+    */
     public function changeCustomer($id,$operation){
 
         if(!empty($id) && !empty($operation)) {
@@ -86,6 +98,9 @@ class CustomerController extends Controller
 
     }
 
+    /*  function to edit particular customer details
+    *   @request object required
+    */
     public function editCustomer(Request $request) {
 
         if(isset($request->name) && isset($request->mobile) && isset($request->email) 

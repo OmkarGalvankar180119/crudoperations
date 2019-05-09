@@ -11,11 +11,16 @@ use Session;
 
 class UserAuthenticationController extends Controller
 {
-    //
+    /* Parameterless construct
+    *  @object creation for UserAuthentication model
+    */
 	public function __construct() {
 		$this->user = new UserAuthentication();
 	}
 
+	/* function to register user
+	*  @request object required
+	*/
 	public function userRegisteration(Request $request) {
 
 		$validator = Validator::make($request->all(),
@@ -47,6 +52,9 @@ class UserAuthenticationController extends Controller
 		
 	}
 
+	/* function to verify user credentials
+	*  @request object required
+	*/
 	public function checkLogin(Request $request) {
 
 		$validator = Validator::make($request->all(),
@@ -79,6 +87,7 @@ class UserAuthenticationController extends Controller
 
 	}
 
+	/* parameterless function to logout user */
 	public function userLogout() {
 
 			Session::forget('user_id');
